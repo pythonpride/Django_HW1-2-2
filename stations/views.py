@@ -22,7 +22,6 @@ with open(BUS_STATION_CSV, newline='', encoding = "UTF-8") as File:
             
 
 def bus_stations(request):
-
     paginator = Paginator(CONTENT, 10)
     page_number = int(request.GET.get("page", 1))
     page = paginator.get_page(page_number)
