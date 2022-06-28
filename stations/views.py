@@ -22,11 +22,12 @@ with open(BUS_STATION_CSV, newline='', encoding = "UTF-8") as File:
             
 
 def bus_stations(request):
-    paginator = Paginator(CONTENT, 10)
+
+    paginator = Paginator(CONTENT, 5)
     page_number = int(request.GET.get("page", 1))
     page = paginator.get_page(page_number)
     context = {
-        'bus_stations': page,
+        'bus_stations': page.object_list,
         'page': page,
     }
     return render(request, 'stations/index.html', context)
